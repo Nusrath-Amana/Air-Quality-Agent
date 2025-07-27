@@ -37,17 +37,14 @@ The system uses **Retrieval-Augmented Generation (RAG)** powered by **LlamaIndex
 ```plaintext
 Air_quality_web/
 ├── backend/
-│   ├── main.py               # FastAPI backend
-│   ├── agent.py              # LLM + tool integration
-│   ├── utils/
-│   │   └── file_reader.py    # Data loading and normalization
-│   ├── .env                  # API keys and config
+│   ├── main.py              # FastAPI entry point
+│   ├── agent_loader.py      # Loads LLM agent with tools
+│   ├── prompts.py           # Prompt templates and instructions
+│   ├── sensor_data/         # Folder with .ndjson sensor files
+│   ├── .env                 # Gemini API key and configs
+│   └── requirements.txt
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx           # React UI
-│   │   ├── components/       # UI components
+│   │   └── App.jsx          # React frontend
 │   └── public/
-├── data/
-│   └── room_a.ndjson
-│   └── room_b.ndjson
 └── README.md
