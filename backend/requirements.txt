@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+fastapi
+uvicorn
+pandas
+python-dotenv
+llama-index>=0.10.28
+google-generativeai
+google-api-core
+llama_index_experimental
+llama-index-llms-gemini
