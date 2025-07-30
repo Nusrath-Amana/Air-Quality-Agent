@@ -16,6 +16,13 @@ backend/backend/
 .vscode/
 .idea/
 
+# Test files
+backend/test.py
+backend/test_llm.py
+backend/test_limit.py
+backend/orginal agent.py
+backend/orginal prompt.py
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -26,3 +33,4 @@ Thumbs.db
 # Others (optional)
 *.sqlite3
 *.db
+

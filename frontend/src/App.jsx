@@ -4,16 +4,32 @@ import './App.css';
 
 function App() {
   const [query, setQuery] = useState('');
-  const [result, setResult] = useState('');
+  const [textResult, setTextResult] = useState('');
+  const [imageUrl, setImageUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setResult("Loading...");
+    setLoading(true);
+    setError(null);
+    setTextResult('');
+    setImageUrl(null);
+
     try {
       const response = await axios.post('http://localhost:8000/ask', { query });
-      setResult(response.data.result || response.data.error);
+      const { result, image_url, error } = response.data;
+
+      if (error) {
+        setError(error);
+      } else {
+        setTextResult(result || "No response");
+        setImageUrl(image_url || null);
+      }
     } catch (err) {
-      setResult("Error contacting backend.");
+      setError("Error contacting backend.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -29,11 +45,29 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>Submit</button>
       </form>
-      <div className="result">
-        <h3>📊 Result:</h3>
-        <pre>{result}</pre>
+
+      <div className="result-container">
+        {loading && <p className="loading">Loading...</p>}
+        {error && <div className="error">{error}</div>}
+
+        {textResult && !error && (
+          <div className="text-result">
+            <h3>Result:</h3>
+            <pre>{textResult}</pre>
+          </div>
+        )}
+
+        {imageUrl && !error && (
+          <div className="image-result">
+            <img
+              src={`http://localhost:8000${imageUrl}`}
+              alt="Generated visualization"
+              style={{ maxWidth: "100%", marginTop: "10px" }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
