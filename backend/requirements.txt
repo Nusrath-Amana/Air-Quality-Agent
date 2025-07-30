@@ -10,3 +10,4 @@ google-generativeai
 google-api-core
 llama_index_experimental
 llama-index-llms-gemini
+matplotlib
