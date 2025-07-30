@@ -2,7 +2,7 @@
 
 An intelligent web application that lets users analyze air quality sensor data from multiple rooms using **natural language queries**.
 
-The system uses **LlamaIndex**, **Gemini Pro API**, and custom tool use to read and process raw `.ndjson` sensor data files directly.
+The system uses **LlamaIndex**, **Gemini API**, and custom tool use to read and process raw `.ndjson` sensor data files directly.
 
 ---
 
