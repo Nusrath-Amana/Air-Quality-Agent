@@ -60,7 +60,7 @@ Air_quality_web/
   - Create and activate a virtual environment:  
   ```bash
   python -m venv venv
-  source venv\Scripts\activate # On Windows
+  source venv/Scripts/activate  # On Windows
   ```
   - Install dependencies:
   ```bash
